@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BLL",
+    "\\Core",
+    "\\DAL"
+  ],
+  "SelectedNode": "\\DAL\\UnitOfWork.cs",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,15 @@
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\bin\Debug\net8.0\BLL.deps.json
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\bin\Debug\net8.0\BLL.dll
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\bin\Debug\net8.0\BLL.pdb
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\bin\Debug\net8.0\Domain.dll
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\bin\Debug\net8.0\Domain.pdb
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\obj\Debug\net8.0\BLL.csproj.AssemblyReference.cache
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\obj\Debug\net8.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\obj\Debug\net8.0\BLL.AssemblyInfoInputs.cache
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\obj\Debug\net8.0\BLL.AssemblyInfo.cs
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\obj\Debug\net8.0\BLL.csproj.CoreCompileInputs.cache
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\obj\Debug\net8.0\BLL.csproj.Up2Date
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\obj\Debug\net8.0\BLL.dll
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\obj\Debug\net8.0\refint\BLL.dll
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\obj\Debug\net8.0\BLL.pdb
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\BLL\obj\Debug\net8.0\ref\BLL.dll

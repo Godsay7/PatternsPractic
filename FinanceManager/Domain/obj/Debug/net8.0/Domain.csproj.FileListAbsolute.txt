@@ -1,0 +1,11 @@
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\Domain\bin\Debug\net8.0\Domain.deps.json
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\Domain\bin\Debug\net8.0\Domain.dll
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\Domain\bin\Debug\net8.0\Domain.pdb
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\Domain\obj\Debug\net8.0\Domain.dll
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\Domain\obj\Debug\net8.0\refint\Domain.dll
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\Domain\obj\Debug\net8.0\Domain.pdb
+D:\Unik\2 course\2 semester\SDA\ConsoleApp1\Domain\obj\Debug\net8.0\ref\Domain.dll
