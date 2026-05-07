@@ -3,24 +3,32 @@
   "WorkspaceRootPath": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\bll\\services\\financeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|solutionrelative:bll\\services\\financeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\bll\\services\\ifinanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|solutionrelative:bll\\services\\ifinanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{25D6F135-47DD-456F-9FF0-0B09597DDD80}|DAL\\DAL.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\dal\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25D6F135-47DD-456F-9FF0-0B09597DDD80}|DAL\\DAL.csproj|solutionrelative:dal\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DDE6B608-6EBF-49DB-9CF5-78D317F2A07D}|Domain\\Domain.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\domain\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DDE6B608-6EBF-49DB-9CF5-78D317F2A07D}|Domain\\Domain.csproj|solutionrelative:domain\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DDE6B608-6EBF-49DB-9CF5-78D317F2A07D}|Domain\\Domain.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\domain\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DDE6B608-6EBF-49DB-9CF5-78D317F2A07D}|Domain\\Domain.csproj|solutionrelative:domain\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{25D6F135-47DD-456F-9FF0-0B09597DDD80}|DAL\\DAL.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\dal\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{25D6F135-47DD-456F-9FF0-0B09597DDD80}|DAL\\DAL.csproj|solutionrelative:dal\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{25D6F135-47DD-456F-9FF0-0B09597DDD80}|DAL\\DAL.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\dal\\financedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25D6F135-47DD-456F-9FF0-0B09597DDD80}|DAL\\DAL.csproj|solutionrelative:dal\\financedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\bll\\mapping\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|solutionrelative:bll\\mapping\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\bll\\dto\\transactiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|solutionrelative:bll\\dto\\transactiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDE6B608-6EBF-49DB-9CF5-78D317F2A07D}|Domain\\Domain.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\domain\\entities\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DDE6B608-6EBF-49DB-9CF5-78D317F2A07D}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DDE6B608-6EBF-49DB-9CF5-78D317F2A07D}|Domain\\Domain.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\domain\\entities\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,12 +39,12 @@
       "RelativeMoniker": "D:0:0:{DDE6B608-6EBF-49DB-9CF5-78D317F2A07D}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DDE6B608-6EBF-49DB-9CF5-78D317F2A07D}|Domain\\Domain.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\domain\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DDE6B608-6EBF-49DB-9CF5-78D317F2A07D}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\bll\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|solutionrelative:bll\\dto\\categorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DDE6B608-6EBF-49DB-9CF5-78D317F2A07D}|Domain\\Domain.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\domain\\entities\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DDE6B608-6EBF-49DB-9CF5-78D317F2A07D}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\bll\\dto\\accountdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|solutionrelative:bll\\dto\\accountdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -106,104 +114,124 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IRepository.cs",
-              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\Domain\\Interfaces\\IRepository.cs",
-              "RelativeDocumentMoniker": "Domain\\Interfaces\\IRepository.cs",
-              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\Domain\\Interfaces\\IRepository.cs",
-              "RelativeToolTip": "Domain\\Interfaces\\IRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T14:37:43.903Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IUnitOfWork.cs",
-              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\Domain\\Interfaces\\IUnitOfWork.cs",
-              "RelativeDocumentMoniker": "Domain\\Interfaces\\IUnitOfWork.cs",
-              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\Domain\\Interfaces\\IUnitOfWork.cs",
-              "RelativeToolTip": "Domain\\Interfaces\\IUnitOfWork.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T14:37:24.612Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\DAL\\UnitOfWork.cs",
-              "RelativeDocumentMoniker": "DAL\\UnitOfWork.cs",
-              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\DAL\\UnitOfWork.cs",
-              "RelativeToolTip": "DAL\\UnitOfWork.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAADwvyYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T14:36:36.025Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "GenericRepository.cs",
               "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\DAL\\GenericRepository.cs",
               "RelativeDocumentMoniker": "DAL\\GenericRepository.cs",
               "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\DAL\\GenericRepository.cs",
               "RelativeToolTip": "DAL\\GenericRepository.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T14:14:44.532Z"
+              "WhenOpened": "2026-05-07T15:17:53.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\DAL\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "DAL\\UnitOfWork.cs",
+              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\DAL\\UnitOfWork.cs",
+              "RelativeToolTip": "DAL\\UnitOfWork.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T15:16:45.802Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FinanceService.cs",
+              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\Services\\FinanceService.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\FinanceService.cs",
+              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\Services\\FinanceService.cs",
+              "RelativeToolTip": "BLL\\Services\\FinanceService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T15:04:57.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IFinanceService.cs",
+              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\Services\\IFinanceService.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\IFinanceService.cs",
+              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\Services\\IFinanceService.cs",
+              "RelativeToolTip": "BLL\\Services\\IFinanceService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T15:14:50.532Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "FinanceDbContext.cs",
-              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\DAL\\FinanceDbContext.cs",
-              "RelativeDocumentMoniker": "DAL\\FinanceDbContext.cs",
-              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\DAL\\FinanceDbContext.cs",
-              "RelativeToolTip": "DAL\\FinanceDbContext.cs",
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\Mapping\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "BLL\\Mapping\\MappingProfile.cs",
+              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\Mapping\\MappingProfile.cs",
+              "RelativeToolTip": "BLL\\Mapping\\MappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T14:27:44.72Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CategoryDTO.cs",
+              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\DTO\\CategoryDTO.cs",
+              "RelativeDocumentMoniker": "BLL\\DTO\\CategoryDTO.cs",
+              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\DTO\\CategoryDTO.cs",
+              "RelativeToolTip": "BLL\\DTO\\CategoryDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T14:04:10.169Z"
+              "WhenOpened": "2026-05-07T10:30:39.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AccountDTO.cs",
+              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\DTO\\AccountDTO.cs",
+              "RelativeDocumentMoniker": "BLL\\DTO\\AccountDTO.cs",
+              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\DTO\\AccountDTO.cs",
+              "RelativeToolTip": "BLL\\DTO\\AccountDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T10:30:25.29Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "TransactionDTO.cs",
+              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\DTO\\TransactionDTO.cs",
+              "RelativeDocumentMoniker": "BLL\\DTO\\TransactionDTO.cs",
+              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\DTO\\TransactionDTO.cs",
+              "RelativeToolTip": "BLL\\DTO\\TransactionDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T10:30:07.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Transaction.cs",
               "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\Domain\\Entities\\Transaction.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Transaction.cs",
               "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\Domain\\Entities\\Transaction.cs",
               "RelativeToolTip": "Domain\\Entities\\Transaction.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T12:51:17.243Z"
+              "WhenOpened": "2026-05-06T12:51:17.243Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Category.cs",
-              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\Domain\\Entities\\Category.cs",
-              "RelativeDocumentMoniker": "Domain\\Entities\\Category.cs",
-              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\Domain\\Entities\\Category.cs",
-              "RelativeToolTip": "Domain\\Entities\\Category.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T12:51:13.4Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BaseEntity.cs",
-              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\Domain\\Entities\\BaseEntity.cs",
-              "RelativeDocumentMoniker": "Domain\\Entities\\BaseEntity.cs",
-              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\Domain\\Entities\\BaseEntity.cs",
-              "RelativeToolTip": "Domain\\Entities\\BaseEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T12:50:59.949Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "Account.cs",
               "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\Domain\\Entities\\Account.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Account.cs",
@@ -211,7 +239,21 @@
               "RelativeToolTip": "Domain\\Entities\\Account.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T12:50:56.556Z"
+              "WhenOpened": "2026-05-06T12:50:56.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\Domain\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Category.cs",
+              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\Domain\\Entities\\Category.cs",
+              "RelativeToolTip": "Domain\\Entities\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-07T10:40:04.344Z",
+              "EditorCaption": ""
             }
           ]
         }
