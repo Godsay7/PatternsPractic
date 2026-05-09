@@ -36,6 +36,13 @@ public class FinanceService : IFinanceService
         return _mapper.Map<IEnumerable<TransactionDTO>>(transactions);
     }
 
+    // Метод для перегляду транзакцій по конкретному рахунку
+    public IEnumerable<TransactionDTO> GetTransactionsByAccount(int accountId)
+    {
+        var transactions = _uow.Transactions.Find(t => t.AccountId == accountId);
+        return _mapper.Map<IEnumerable<TransactionDTO>>(transactions);
+    }
+
     public void CreateAccount(AccountDTO accountDto)
     {
         var account = _mapper.Map<Account>(accountDto);
@@ -79,5 +86,13 @@ public class FinanceService : IFinanceService
         _uow.Transactions.Add(transaction);
         _uow.Accounts.Update(account);
         _uow.Save();
+    }
+
+    public Dictionary<string, decimal> GetStatisticsByCategory()
+    {
+        var transactions = _uow.Transactions.GetAll();
+        return transactions
+            .GroupBy(t => t.Category.Name)
+            .ToDictionary(g => g.Key, g => g.Sum(t => t.Amount));
     }
 }

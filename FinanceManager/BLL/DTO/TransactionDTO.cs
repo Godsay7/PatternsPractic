@@ -5,9 +5,10 @@
         public int Id { get; set; }
         public decimal Amount { get; set; }
         public DateTime Date { get; set; }
-        public string CategoryName { get; set; } // Тільки ім'я для виводу на екран
+        public string? Description { get; set; }
+        public string CategoryName { get; set; }
         public string AccountName { get; set; }
-        public int AccountId { get; set; }       // ID для вибору зі списку
+        public int AccountId { get; set; }
         public int CategoryId { get; set; }
     }
 }
