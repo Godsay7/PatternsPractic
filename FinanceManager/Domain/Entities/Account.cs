@@ -3,7 +3,7 @@
     public class Account : BaseEntity
     {
         public string Name { get; set; } = string.Empty;
-        public decimal Balance { get; set; }
+        public decimal Balance { get; set; } = 0;
         public ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
     }
 }

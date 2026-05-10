@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Xml.Serialization;
 using BLL.DTO;
 using BLL.Services;
 using Domain.Entities;
@@ -17,7 +18,7 @@ public class ConsoleMenu
             Console.WriteLine("=== FINANCE MANAGER ===");
             Console.WriteLine("1. Accounts Management");
             Console.WriteLine("2. Categories Management");
-            Console.WriteLine("3. New Transaction");
+            Console.WriteLine("3. Transaction");
             Console.WriteLine("4. Analysis & Reports");
             Console.WriteLine("0. Exit");
 
@@ -58,12 +59,8 @@ public class ConsoleMenu
             {
                 Console.Write("Enter name: ");
                 var name = Console.ReadLine();
-                Console.Write("Initial balance: ");
-                if (decimal.TryParse(Console.ReadLine(), out decimal bal))
-                {
-                    _service.CreateAccount(new AccountDTO { Name = name, Balance = bal });
-                    Console.WriteLine("Account created!");
-                }
+                _service.CreateAccount(new AccountDTO { Name = name, Balance = 0 });
+                Console.WriteLine("Account created!");
                 Thread.Sleep(1000);
             }
         }
@@ -120,89 +117,167 @@ public class ConsoleMenu
 
     private void CreateTransaction()
     {
-        Console.Clear();
-        Console.WriteLine("--- NEW TRANSACTION ---");
-
-        var accounts = _service.GetAllAccounts().ToList();
-        if (!accounts.Any())
+        while (true) 
         {
-            Console.WriteLine("No accounts found! Create an account first.");
-            Thread.Sleep(2000);
-            return;
-        }
-
-        foreach (var a in accounts)
-        {
-            Console.WriteLine($"[{a.Id}] {a.Name} (Bal: {a.Balance})");
-        }
-
-        int accId;
-        while (true)
-        {
-            Console.Write("Select Account ID: ");
-            if (int.TryParse(Console.ReadLine(), out accId) && accounts.Any(a => a.Id == accId))
+            Console.Clear();
+            Console.WriteLine("--- TRANSACTION ---");
+            Console.WriteLine("1. Create New Transaction");
+            Console.WriteLine("2. View Transaction History");
+            Console.WriteLine("3. Make TRANSFER");
+            Console.WriteLine("0. Back to Main Menu");
+            var choice = Console.ReadLine();
+            switch (choice)
             {
-                break;
+                case "0": return;
+                case "1":
+                    Console.WriteLine("--- NEW TRANSACTION ---");
+                    var accounts = _service.GetAllAccounts().ToList();
+                    if (!accounts.Any())
+                    {
+                        Console.WriteLine("No accounts found! Create an account first.");
+                        Thread.Sleep(2000);
+                        return;
+                    }
+
+                    foreach (var a in accounts)
+                    {
+                        Console.WriteLine($"[{a.Id}] {a.Name} (Bal: {a.Balance})");
+                    }
+
+                    int accId;
+                    while (true)
+                    {
+                        Console.Write("Select Account ID: ");
+                        if (int.TryParse(Console.ReadLine(), out accId) && accounts.Any(a => a.Id == accId))
+                        {
+                            break;
+                        }
+                        Console.WriteLine("Invalid ID! Please enter an existing Account ID.");
+                    }
+
+                    var categories = _service.GetAllCategories().ToList();
+                    if (!categories.Any())
+                    {
+                        Console.WriteLine("No categories found! Create a category first.");
+                        Thread.Sleep(2000);
+                        return;
+                    }
+
+                    foreach (var c in categories)
+                    {
+                        Console.WriteLine($"[{c.Id}] {c.Name} ({c.Type})");
+                    }
+
+                    int catId;
+                    while (true)
+                    {
+                        Console.Write("Select Category ID: ");
+                        if (int.TryParse(Console.ReadLine(), out catId) && categories.Any(c => c.Id == catId))
+                        {
+                            break;
+                        }
+                        Console.WriteLine("Invalid ID! Please enter an existing Category ID.");
+                    }
+
+                    decimal amount;
+                    while (true)
+                    {
+                        Console.Write("Enter Amount: ");
+                        if (decimal.TryParse(Console.ReadLine(), out amount) && amount > 0)
+                        {
+                            break;
+                        }
+                        Console.WriteLine("Invalid amount! Please enter a valid positive number.");
+                    }
+
+                    Console.Write("Description (optional): ");
+                    string desc = Console.ReadLine();
+
+                    try
+                    {
+                        _service.MakeTransaction(new TransactionDTO
+                        {
+                            AccountId = accId,
+                            CategoryId = catId,
+                            Amount = amount,
+                            Description = desc
+                        });
+                        Console.WriteLine("\nSuccess! Transaction recorded.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"\nERROR: {ex.Message}");
+                    }
+
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    break;
+                case "2":
+                    var transactions = _service.GetTransactionHistory();
+                    if (!transactions.Any())
+                    {
+                        Console.WriteLine("No transactions yet.");
+                    }
+                    else
+                    {
+                        foreach (var t in transactions)
+                        {
+                            Console.WriteLine($"ID: {t.Id} | {t.Date.ToShortDateString()} | {t.CategoryName} | {t.AccountName} | {t.Amount} UAH | {t.Description}");
+                        }
+                    }
+                    Console.WriteLine("\nPress any key...");
+                    Console.ReadKey();
+                    break;
+                case "3":
+                    Console.Clear();
+                    Console.WriteLine("--- TRANSFER FUNDS ---");
+
+                    var accounts1 = _service.GetAllAccounts().ToList();
+                    if (accounts1.Count < 2)
+                    {
+                        Console.WriteLine("You need at least 2 accounts to make a transfer!");
+                        Thread.Sleep(2000);
+                        return;
+                    }
+
+                    foreach (var a in accounts1) Console.WriteLine($"[{a.Id}] {a.Name} (Bal: {a.Balance})");
+
+                    Console.Write("\nSelect Sender Account ID: ");
+                    int fromId = int.Parse(Console.ReadLine());
+
+                    Console.Write("Select Receiver Account ID: ");
+                    int toId = int.Parse(Console.ReadLine());
+
+                    Console.Write("Enter Amount to transfer: ");
+                    decimal amount1 = decimal.Parse(Console.ReadLine());
+
+                    Console.Write("\nDescription (optional): ");
+                    string description = Console.ReadLine();
+
+                    try
+                    {
+                        var transferDto = new TransferDTO
+                        {
+                            FromAccountId = fromId,
+                            ToAccountId = toId,
+                            Amount = amount1,
+                            Description = description
+                        };
+
+                        _service.TransferFunds(transferDto);
+                        Console.WriteLine("\nSuccess! Transfer completed.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"\nERROR: {ex.Message}");
+                    }
+
+                    Console.WriteLine("Press any key to continue...");
+                    Console.ReadKey();
+                    break;
             }
-            Console.WriteLine("Invalid ID! Please enter an existing Account ID.");
         }
-
-        var categories = _service.GetAllCategories().ToList();
-        if (!categories.Any())
-        {
-            Console.WriteLine("No categories found! Create a category first.");
-            Thread.Sleep(2000);
-            return;
-        }
-
-        foreach (var c in categories)
-        {
-            Console.WriteLine($"[{c.Id}] {c.Name} ({c.Type})");
-        }
-
-        int catId;
-        while (true)
-        {
-            Console.Write("Select Category ID: ");
-            if (int.TryParse(Console.ReadLine(), out catId) && categories.Any(c => c.Id == catId))
-            {
-                break;
-            }
-            Console.WriteLine("Invalid ID! Please enter an existing Category ID.");
-        }
-
-        decimal amount;
-        while (true)
-        {
-            Console.Write("Enter Amount: ");
-            if (decimal.TryParse(Console.ReadLine(), out amount) && amount > 0)
-            {
-                break;
-            }
-            Console.WriteLine("Invalid amount! Please enter a valid positive number.");
-        }
-
-        Console.Write("Description (optional): ");
-        string desc = Console.ReadLine();
-
-        try
-        {
-            _service.MakeTransaction(new TransactionDTO
-            {
-                AccountId = accId,
-                CategoryId = catId,
-                Amount = amount,
-                Description = desc
-            });
-            Console.WriteLine("\nSuccess! Transaction recorded.");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"\nERROR: {ex.Message}");
-        }
-
-        Console.WriteLine("Press any key to continue...");
-        Console.ReadKey();
+        
     }
 
     private void ShowAnalytics()

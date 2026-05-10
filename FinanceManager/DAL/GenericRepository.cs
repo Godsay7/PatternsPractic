@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using System.Linq.Expressions;
+using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +13,7 @@ namespace DAL
         public GenericRepository(FinanceDbContext context)
         {
             _context = context;
-            _dbSet = context.Set<T>(); // Отримуємо доступ до конкретної таблиці
+            _dbSet = context.Set<T>();
         }
 
         public IEnumerable<T> GetAll()
