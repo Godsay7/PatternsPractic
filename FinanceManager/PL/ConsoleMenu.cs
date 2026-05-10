@@ -1,4 +1,5 @@
-﻿using BLL.DTO;
+﻿using System.Text;
+using BLL.DTO;
 using BLL.Services;
 using Domain.Entities;
 
@@ -122,7 +123,6 @@ public class ConsoleMenu
         Console.Clear();
         Console.WriteLine("--- NEW TRANSACTION ---");
 
-        // 1. Показуємо доступні рахунки
         var accounts = _service.GetAllAccounts().ToList();
         if (!accounts.Any())
         {
@@ -140,7 +140,6 @@ public class ConsoleMenu
         while (true)
         {
             Console.Write("Select Account ID: ");
-            // Перевіряємо, чи це число І чи є рахунок з таким ID у списку
             if (int.TryParse(Console.ReadLine(), out accId) && accounts.Any(a => a.Id == accId))
             {
                 break;
@@ -148,7 +147,6 @@ public class ConsoleMenu
             Console.WriteLine("Invalid ID! Please enter an existing Account ID.");
         }
 
-        // 2. Показуємо доступні категорії
         var categories = _service.GetAllCategories().ToList();
         if (!categories.Any())
         {
@@ -166,7 +164,6 @@ public class ConsoleMenu
         while (true)
         {
             Console.Write("Select Category ID: ");
-            // Перевіряємо, чи це число І чи є категорія з таким ID у списку
             if (int.TryParse(Console.ReadLine(), out catId) && categories.Any(c => c.Id == catId))
             {
                 break;
@@ -174,12 +171,10 @@ public class ConsoleMenu
             Console.WriteLine("Invalid ID! Please enter an existing Category ID.");
         }
 
-        // 3. Сума
         decimal amount;
         while (true)
         {
             Console.Write("Enter Amount: ");
-            // Перевіряємо, чи це коректне число (можна також додати умову && amount > 0, якщо сума не може бути від'ємною)
             if (decimal.TryParse(Console.ReadLine(), out amount) && amount > 0)
             {
                 break;
@@ -212,23 +207,81 @@ public class ConsoleMenu
 
     private void ShowAnalytics()
     {
-        Console.Clear();
-        Console.WriteLine("--- EXPENSE ANALYSIS ---");
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("--- STATISTICS ---");
+            Console.WriteLine("1. View statistics by category");
+            Console.WriteLine("2. View statistics by account");
+            Console.WriteLine("0. Back to Main Menu");
 
-        var stats = _service.GetStatisticsByCategory();
-        if (!stats.Any())
-        {
-            Console.WriteLine("No transactions yet.");
-        }
-        else
-        {
-            foreach (var item in stats)
+            var choice = Console.ReadLine();
+            if (choice == "0") break;
+
+            if (choice == "1")
             {
-                Console.WriteLine($"{item.Key}: {item.Value} UAH");
+                var statsExpense = _service.GetStatisticsByCategory(TransactionType.Expense);
+                var statsIncome = _service.GetStatisticsByCategory(TransactionType.Income);
+                if (!statsExpense.Any() && !statsIncome.Any())
+                {
+                    Console.WriteLine("No transactions yet.");
+                }
+                else
+                {
+                    Console.WriteLine("All users' expenses for all time:");
+                    foreach (var item in statsExpense)
+                    {
+                        Console.WriteLine($"{item.Key}: {item.Value} UAH");
+                    }
+                    Console.WriteLine("\nAll users' income for all time:");
+                    foreach (var item in statsIncome)
+                    {
+                        Console.WriteLine($"{item.Key}: {item.Value} UAH");
+                    }
+                }
+                Console.WriteLine("\nPress any key...");
+                Console.ReadKey();
+            }
+            else if (choice == "2")
+            {
+                var accounts = _service.GetAllAccounts().ToList();
+                if (!accounts.Any())
+                {
+                    Console.WriteLine("No accounts found! Create an account first.");
+                    Thread.Sleep(2000);
+                    return;
+                }
+                Console.Clear();
+                foreach (var a in accounts)
+                {
+                    Console.WriteLine($"[{a.Id}] {a.Name} (Bal: {a.Balance})");
+                }
+
+                int accId;
+                while (true)
+                {
+                    Console.Write("Select Account ID: ");
+                    if (int.TryParse(Console.ReadLine(), out accId) && accounts.Any(a => a.Id == accId))
+                    {
+                        var statsByAccExp = _service.GetStatisticsByAccount(accId, TransactionType.Expense);
+                        var statsByAccIn = _service.GetStatisticsByAccount(accId, TransactionType.Income);
+                        Console.WriteLine("\nUser's expenses:"); 
+                        foreach (var item in statsByAccExp)
+                        {
+                            Console.WriteLine($"{item.Key}: {item.Value} UAH");
+                        }
+                        Console.WriteLine("\nUser's incomes:");
+                        foreach (var item in statsByAccIn)
+                        {
+                            Console.WriteLine($"{item.Key}: {item.Value} UAH");
+                        }
+                        Console.WriteLine("\nPress any key...");
+                        Console.ReadKey();
+                        break;
+                    }
+                    Console.WriteLine("Invalid ID! Please enter an existing Account ID.");
+                }
             }
         }
-
-        Console.WriteLine("\nPress Enter to return...");
-        Console.ReadLine();
     }
 }

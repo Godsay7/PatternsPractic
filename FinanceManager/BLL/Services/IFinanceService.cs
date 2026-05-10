@@ -1,4 +1,5 @@
 ﻿using BLL.DTO;
+using Domain.Entities;
 
 namespace BLL.Services
 {
@@ -12,6 +13,7 @@ namespace BLL.Services
         void CreateAccount(AccountDTO accountDto);
         void CreateCategory(CategoryDTO categoryDto);
         void MakeTransaction(TransactionDTO transactionDto);
-        Dictionary<string, decimal> GetStatisticsByCategory();
+        Dictionary<string, decimal> GetStatisticsByCategory(TransactionType type);
+        Dictionary<string, decimal> GetStatisticsByAccount(int accID, TransactionType type);
     }
 }

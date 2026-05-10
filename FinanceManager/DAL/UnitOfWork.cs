@@ -29,10 +29,9 @@ namespace DAL
 
         public void Save()
         {
-            _context.SaveChanges(); // Єдине місце, де ми звертаємося до бази для запису!
+            _context.SaveChanges();
         }
 
-        // Обов'язкове звільнення ресурсів підключення до БД
         public void Dispose()
         {
             _context.Dispose();

@@ -12,7 +12,6 @@ namespace Domain.Entities
         public DateTime Date { get; set; }
         public string? Description { get; set; }
 
-        // Зовнішні ключі
         public int AccountId { get; set; }
         public Account Account { get; set; } = null!;
 
