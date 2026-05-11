@@ -42,30 +42,89 @@ public class ConsoleMenu
             Console.WriteLine("--- ACCOUNTS ---");
             Console.WriteLine("1. View All Accounts");
             Console.WriteLine("2. Create New Account");
+            Console.WriteLine("3. Update Account");
             Console.WriteLine("0. Back to Main Menu");
 
             var choice = Console.ReadLine();
-            if (choice == "0") break;
 
-            if (choice == "1")
+            switch (choice)
             {
-                var accounts = _service.GetAllAccounts();
-                foreach (var a in accounts)
-                    Console.WriteLine($"ID: {a.Id} | Name: {a.Name} | Balance: {a.Balance} UAH");
-                Console.WriteLine("\nPress any key...");
-                Console.ReadKey();
-            }
-            else if (choice == "2")
-            {
-                Console.Write("Enter name: ");
-                var name = Console.ReadLine();
-                _service.CreateAccount(new AccountDTO { Name = name, Balance = 0 });
-                Console.WriteLine("Account created!");
-                Thread.Sleep(1000);
+                case "1":
+                    var accountsList = _service.GetAllAccounts().ToList();
+                    if (!accountsList.Any()) Console.WriteLine("No accounts found.");
+
+                    foreach (var a in accountsList)
+                        Console.WriteLine($"ID: {a.Id} | Name: {a.Name} | Balance: {a.Balance} UAH");
+
+                    Console.WriteLine("\nPress any key...");
+                    Console.ReadKey();
+                    break;
+
+                case "2":
+                    Console.Write("Enter name: ");
+                    var name = Console.ReadLine();
+                    _service.CreateAccount(new AccountDTO { Name = name });
+                    Console.WriteLine("Account created!");
+                    Thread.Sleep(1000);
+                    break;
+
+                case "3":
+                    var accountsToUpdate = _service.GetAllAccounts().ToList();
+                    if (!accountsToUpdate.Any())
+                    {
+                        Console.WriteLine("No accounts found! Create one first.");
+                        Thread.Sleep(2000);
+                        break;
+                    }
+
+                    foreach (var a in accountsToUpdate)
+                        Console.WriteLine($"ID: {a.Id} | Name: {a.Name} | Balance: {a.Balance} UAH");
+
+                    Console.Write("\nSelect Account ID to update: ");
+
+                    if (int.TryParse(Console.ReadLine(), out int accId) && accountsToUpdate.Any(a => a.Id == accId))
+                    {
+                        var currentAccount = accountsToUpdate.First(a => a.Id == accId);
+                        Console.WriteLine($"Current name: {currentAccount.Name}");
+                        Console.Write("Enter new name (or press Enter to cancel): ");
+
+                        string newName = Console.ReadLine();
+
+                        if (!string.IsNullOrWhiteSpace(newName))
+                        {
+                            try
+                            {
+                                _service.UpdateAccount(accId, newName);
+                                Console.WriteLine("Account updated successfully!");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"ERROR: {ex.Message}");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Update cancelled. Name kept as is.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid ID format or Account does not exist.");
+                    }
+                    Thread.Sleep(2000);
+                    break;
+
+                case "0":
+                    return;
+
+                default:
+                    Console.WriteLine("Invalid choice! Please try again.");
+                    Thread.Sleep(1000);
+                    break;
             }
         }
     }
-    
+
     private void CategorySubMenu()
     {
         while (true)
@@ -74,42 +133,100 @@ public class ConsoleMenu
             Console.WriteLine("--- CATEGORIES ---");
             Console.WriteLine("1. View All Categories");
             Console.WriteLine("2. Create New Category");
+            Console.WriteLine("3. Update Category");
             Console.WriteLine("0. Back to Main Menu");
 
             var choice = Console.ReadLine();
-            if (choice == "0") break;
 
-            if (choice == "1")
+            switch (choice)
             {
-                var categories = _service.GetAllCategories();
-                foreach (var c in categories)
-                    Console.WriteLine($"ID: {c.Id} | Name: {c.Name} | Type: {c.Type}");
-                Console.WriteLine("\nPress any key...");
-                Console.ReadKey();
-            }
-            else if (choice == "2")
-            {
-                Console.Write("Enter name: ");
-                var name = Console.ReadLine();
+                case "1":
+                    var categoriesList = _service.GetAllCategories().ToList();
+                    if (!categoriesList.Any()) Console.WriteLine("No categories found.");
 
-                int typeIndex;
+                    foreach (var c in categoriesList)
+                        Console.WriteLine($"ID: {c.Id} | Name: {c.Name} | Type: {c.Type}");
 
-                while (true)
-                {
-                    Console.Write("Type (0 - Income, 1 - Expense): ");
-                    string input = Console.ReadLine();
+                    Console.WriteLine("\nPress any key...");
+                    Console.ReadKey();
+                    break;
 
-                    if (int.TryParse(input, out typeIndex) && (typeIndex == 0 || typeIndex == 1))
+                case "2":
+                    Console.Write("Enter name: ");
+                    var name = Console.ReadLine();
+
+                    int typeIndex;
+                    while (true)
                     {
+                        Console.Write("Type (0 - Income, 1 - Expense): ");
+                        string input = Console.ReadLine();
+
+                        if (int.TryParse(input, out typeIndex) && (typeIndex == 0 || typeIndex == 1))
+                        {
+                            break;
+                        }
+                        Console.WriteLine("Invalid input! Please enter exactly 0 or 1.");
+                    }
+
+                    var type = (TransactionType)typeIndex;
+                    _service.CreateCategory(new CategoryDTO { Name = name, Type = type });
+                    Console.WriteLine("Category created!");
+                    Thread.Sleep(2000);
+                    break;
+
+                case "3":
+                    var categoriesToUpdate = _service.GetAllCategories().ToList();
+                    if (!categoriesToUpdate.Any())
+                    {
+                        Console.WriteLine("No categories found! Create one first.");
+                        Thread.Sleep(2000);
                         break;
                     }
-                    Console.WriteLine("Invalid input! Please enter exactly 0 or 1.");
-                }
 
-                var type = (TransactionType)typeIndex;
-                _service.CreateCategory(new CategoryDTO { Name = name, Type = type });
-                Console.WriteLine("Category created!");
-                Thread.Sleep(2000);
+                    foreach (var c in categoriesToUpdate)
+                        Console.WriteLine($"ID: {c.Id} | Name: {c.Name} | Type: {c.Type}");
+
+                    Console.Write("\nSelect Category ID to update: ");
+
+                    if (int.TryParse(Console.ReadLine(), out int catId) && categoriesToUpdate.Any(c => c.Id == catId))
+                    {
+                        var currentCategory = categoriesToUpdate.First(c => c.Id == catId);
+                        Console.WriteLine($"Current name: {currentCategory.Name}");
+                        Console.Write("Enter new name (or press Enter to cancel): ");
+
+                        string newName = Console.ReadLine();
+
+                        if (!string.IsNullOrWhiteSpace(newName))
+                        {
+                            try
+                            {
+                                _service.UpdateCategory(catId, newName);
+                                Console.WriteLine("Category updated successfully!");
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine($"ERROR: {ex.Message}");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Update cancelled. Name kept as is.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid ID format or Category does not exist.");
+                    }
+                    Thread.Sleep(2000);
+                    break;
+
+                case "0":
+                    return;
+
+                default:
+                    Console.WriteLine("Invalid choice! Please try again.");
+                    Thread.Sleep(1000);
+                    break;
             }
         }
     }
@@ -275,6 +392,10 @@ public class ConsoleMenu
                     Console.WriteLine("Press any key to continue...");
                     Console.ReadKey();
                     break;
+                default:
+                    Console.WriteLine("Invalid choice! Please try again.");
+                    Thread.Sleep(1000);
+                    break;
             }
         }
         
@@ -291,71 +412,71 @@ public class ConsoleMenu
             Console.WriteLine("0. Back to Main Menu");
 
             var choice = Console.ReadLine();
-            if (choice == "0") break;
-
-            if (choice == "1")
+            switch (choice)
             {
-                var statsExpense = _service.GetStatisticsByCategory(TransactionType.Expense);
-                var statsIncome = _service.GetStatisticsByCategory(TransactionType.Income);
-                if (!statsExpense.Any() && !statsIncome.Any())
-                {
-                    Console.WriteLine("No transactions yet.");
-                }
-                else
-                {
-                    Console.WriteLine("All users' expenses for all time:");
-                    foreach (var item in statsExpense)
+                case "1":
+                    var statsExpense = _service.GetStatisticsByCategory(TransactionType.Expense);
+                    var statsIncome = _service.GetStatisticsByCategory(TransactionType.Income);
+                    if (!statsExpense.Any() && !statsIncome.Any())
                     {
-                        Console.WriteLine($"{item.Key}: {item.Value} UAH");
+                        Console.WriteLine("No transactions yet.");
                     }
-                    Console.WriteLine("\nAll users' income for all time:");
-                    foreach (var item in statsIncome)
+                    else
                     {
-                        Console.WriteLine($"{item.Key}: {item.Value} UAH");
-                    }
-                }
-                Console.WriteLine("\nPress any key...");
-                Console.ReadKey();
-            }
-            else if (choice == "2")
-            {
-                var accounts = _service.GetAllAccounts().ToList();
-                if (!accounts.Any())
-                {
-                    Console.WriteLine("No accounts found! Create an account first.");
-                    Thread.Sleep(2000);
-                    return;
-                }
-                Console.Clear();
-                foreach (var a in accounts)
-                {
-                    Console.WriteLine($"[{a.Id}] {a.Name} (Bal: {a.Balance})");
-                }
-
-                int accId;
-                while (true)
-                {
-                    Console.Write("Select Account ID: ");
-                    if (int.TryParse(Console.ReadLine(), out accId) && accounts.Any(a => a.Id == accId))
-                    {
-                        var statsByAccExp = _service.GetStatisticsByAccount(accId, TransactionType.Expense);
-                        var statsByAccIn = _service.GetStatisticsByAccount(accId, TransactionType.Income);
-                        Console.WriteLine("\nUser's expenses:"); 
-                        foreach (var item in statsByAccExp)
+                        Console.WriteLine("All users' expenses for all time:");
+                        foreach (var item in statsExpense)
                         {
                             Console.WriteLine($"{item.Key}: {item.Value} UAH");
                         }
-                        Console.WriteLine("\nUser's incomes:");
-                        foreach (var item in statsByAccIn)
+                        Console.WriteLine("\nAll users' income for all time:");
+                        foreach (var item in statsIncome)
                         {
                             Console.WriteLine($"{item.Key}: {item.Value} UAH");
                         }
-                        Console.WriteLine("\nPress any key...");
-                        Console.ReadKey();
-                        break;
                     }
-                    Console.WriteLine("Invalid ID! Please enter an existing Account ID.");
-                }
+                    Console.WriteLine("\nPress any key...");
+                    Console.ReadKey();
+                    break;
+                case "2":
+                    var accounts = _service.GetAllAccounts().ToList();
+                    if (!accounts.Any())
+                    {
+                        Console.WriteLine("No accounts found! Create an account first.");
+                        Thread.Sleep(2000);
+                        return;
+                    }
+                    Console.Clear();
+                    foreach (var a in accounts)
+                    {
+                        Console.WriteLine($"[{a.Id}] {a.Name} (Bal: {a.Balance})");
+                    }
+
+                    int accId;
+                    while (true)
+                    {
+                        Console.Write("Select Account ID: ");
+                        if (int.TryParse(Console.ReadLine(), out accId) && accounts.Any(a => a.Id == accId))
+                        {
+                            var statsByAccExp = _service.GetStatisticsByAccount(accId, TransactionType.Expense);
+                            var statsByAccIn = _service.GetStatisticsByAccount(accId, TransactionType.Income);
+                            Console.WriteLine("\nUser's expenses:");
+                            foreach (var item in statsByAccExp)
+                            {
+                                Console.WriteLine($"{item.Key}: {item.Value} UAH");
+                            }
+                            Console.WriteLine("\nUser's incomes:");
+                            foreach (var item in statsByAccIn)
+                            {
+                                Console.WriteLine($"{item.Key}: {item.Value} UAH");
+                            }
+                            Console.WriteLine("\nPress any key...");
+                            Console.ReadKey();
+                            break;
+                        }
+                        Console.WriteLine("Invalid ID! Please enter an existing Account ID.");
+                    }
+                    break;
+                case "0": return;
             }
         }
     }
