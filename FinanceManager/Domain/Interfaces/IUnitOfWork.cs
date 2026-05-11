@@ -13,7 +13,6 @@ namespace Domain.Interfaces
         IRepository<Category> Categories { get; }
         IRepository<Transaction> Transactions { get; }
 
-        // Метод, який фіксує всі зміни в базі даних за один раз
         void Save();
     }
 }

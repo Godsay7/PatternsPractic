@@ -5,18 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{07297DAC-AA1B-4993-BC2B-DD8F3138FED3}|PL\\PL.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\pl\\consolemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{07297DAC-AA1B-4993-BC2B-DD8F3138FED3}|PL\\PL.csproj|solutionrelative:pl\\consolemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\bll\\services\\financeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|solutionrelative:bll\\services\\financeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\bll\\services\\ifinanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C00CDCB4-A018-4AC6-8F36-8AA5727D2463}|BLL\\BLL.csproj|solutionrelative:bll\\services\\ifinanceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{25D6F135-47DD-456F-9FF0-0B09597DDD80}|DAL\\DAL.csproj|d:\\unik\\2 course\\2 semester\\sda\\financemanager\\dal\\financedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{25D6F135-47DD-456F-9FF0-0B09597DDD80}|DAL\\DAL.csproj|solutionrelative:dal\\financedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,19 +28,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-08T13:25:23.243Z",
               "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FinanceService.cs",
-              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\Services\\FinanceService.cs",
-              "RelativeDocumentMoniker": "BLL\\Services\\FinanceService.cs",
-              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\Services\\FinanceService.cs",
-              "RelativeToolTip": "BLL\\Services\\FinanceService.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-11T07:22:35.47Z",
               "EditorCaption": ""
             },
             {
@@ -110,32 +85,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IFinanceService.cs",
-              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\Services\\IFinanceService.cs",
-              "RelativeDocumentMoniker": "BLL\\Services\\IFinanceService.cs",
-              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\BLL\\Services\\IFinanceService.cs",
-              "RelativeToolTip": "BLL\\Services\\IFinanceService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-07T15:14:50.532Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FinanceDbContext.cs",
-              "DocumentMoniker": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\DAL\\FinanceDbContext.cs",
-              "RelativeDocumentMoniker": "DAL\\FinanceDbContext.cs",
-              "ToolTip": "D:\\Unik\\2 course\\2 semester\\SDA\\FinanceManager\\DAL\\FinanceDbContext.cs",
-              "RelativeToolTip": "DAL\\FinanceDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T10:24:30.379Z",
-              "EditorCaption": ""
             }
           ]
         }

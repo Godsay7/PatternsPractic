@@ -131,25 +131,21 @@ public class FinanceService : IFinanceService
 
     public void TransferFunds(TransferDTO dto)
     {
-        // Базові перевірки
         if (dto.FromAccountId == dto.ToAccountId)
             throw new Exception("Cannot transfer funds to the same account.");
 
         if (dto.Amount <= 0)
             throw new Exception("Transfer amount must be greater than zero.");
 
-        // Отримуємо рахунки
         var fromAccount = _uow.Accounts.GetById(dto.FromAccountId);
         var toAccount = _uow.Accounts.GetById(dto.ToAccountId);
 
         if (fromAccount == null || toAccount == null)
             throw new Exception("One or both accounts not found.");
 
-        // Перевірка балансу
         if (fromAccount.Balance < dto.Amount)
             throw new Exception($"Insufficient funds on account '{fromAccount.Name}'.");
 
-        // 1. Створюємо транзакцію списання
         var expenseTx = new Transaction
         {
             AccountId = dto.FromAccountId,
@@ -161,7 +157,6 @@ public class FinanceService : IFinanceService
                 : dto.Description
         };
 
-        // 2. Створюємо транзакцію зарахування
         var incomeTx = new Transaction
         {
             AccountId = dto.ToAccountId,
@@ -173,17 +168,14 @@ public class FinanceService : IFinanceService
                 : dto.Description
         };
 
-        // 3. Оновлюємо фізичні баланси рахунків
         fromAccount.Balance -= dto.Amount;
         toAccount.Balance += dto.Amount;
 
-        // 4. Додаємо все в репозиторії
         _uow.Transactions.Add(expenseTx);
         _uow.Transactions.Add(incomeTx);
         _uow.Accounts.Update(fromAccount);
         _uow.Accounts.Update(toAccount);
 
-        // 5. Зберігаємо всі 4 дії (2 інсерти, 2 апдейти) ОДНІЄЮ транзакцією в БД
         _uow.Save();
     }
 }

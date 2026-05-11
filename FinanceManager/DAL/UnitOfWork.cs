@@ -12,7 +12,6 @@ namespace DAL
     {
         private readonly FinanceDbContext _context;
 
-        // Приватні поля для зберігання створених репозиторіїв
         private IRepository<Account>? _accounts;
         private IRepository<Category>? _categories;
         private IRepository<Transaction>? _transactions;
@@ -22,7 +21,6 @@ namespace DAL
             _context = context;
         }
 
-        // Якщо репозиторій ще не створено - створюємо, якщо створено - повертаємо існуючий
         public IRepository<Account> Accounts => _accounts ??= new GenericRepository<Account>(_context);
         public IRepository<Category> Categories => _categories ??= new GenericRepository<Category>(_context);
         public IRepository<Transaction> Transactions => _transactions ??= new GenericRepository<Transaction>(_context);
