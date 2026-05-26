@@ -3,68 +3,63 @@ using BLL.DTO;
 using BLL.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace PL.Controllers
+[ApiController]
+[Route("api/[controller]")]
+public class CategoriesController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class CategoriesController : ControllerBase
+    private readonly IFinanceService _service;
+
+    public CategoriesController(IFinanceService service)
     {
-        private readonly IFinanceService _service;
+        _service = service;
+    }
 
-        public CategoriesController(IFinanceService service)
+    [HttpGet]
+    public IActionResult GetAll()
+    {
+        var categories = _service.GetAllCategories();
+        return Ok(categories);
+    }
+
+    [HttpPost]
+    public IActionResult Create([FromBody] CategoryDTO dto)
+    {
+        try
         {
-            _service = service;
+            _service.CreateCategory(dto);
+            return Ok(new { message = "Category created successfully!" });
         }
-
-        // GET: api/categories
-        [HttpGet]
-        public IActionResult GetAll()
+        catch (Exception ex)
         {
-            var categories = _service.GetAllCategories();
-            return Ok(categories);
+            return BadRequest(new { error = ex.Message });
         }
+    }
 
-        // POST: api/categories
-        [HttpPost]
-        public IActionResult Create([FromBody] CategoryDTO dto)
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, [FromBody] string newName)
+    {
+        try
         {
-            try
-            {
-                _service.CreateCategory(dto);
-                return Ok(new { message = "Category created successfully!" });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { error = ex.Message });
-            }
+            _service.UpdateCategory(id, newName);
+            return Ok(new { message = "Category updated successfully!" });
         }
-
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] string newName)
+        catch (Exception ex)
         {
-            try
-            {
-                _service.UpdateCategory(id, newName);
-                return Ok(new { message = "Category updated successfully!" });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { error = ex.Message });
-            }
+            return BadRequest(new { error = ex.Message });
         }
+    }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        try
         {
-            try
-            {
-                _service.DeleteCategory(id);
-                return Ok(new { message = "Category deleted successfully!" });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new { error = ex.Message });
-            }
+            _service.DeleteCategory(id);
+            return Ok(new { message = "Category deleted successfully!" });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { error = ex.Message });
         }
     }
 }

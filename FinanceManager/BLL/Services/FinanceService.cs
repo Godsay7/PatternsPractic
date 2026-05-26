@@ -88,20 +88,23 @@ public class FinanceService : IFinanceService
         if (account == null)
             throw new Exception($"Account with ID {id} not found.");
 
-        if (account.Transactions != null)
-            throw new Exception("This account can't be deleted, because the user has already made transactions.");
+        bool hasTransactions = _uow.Transactions.Find(t => t.AccountId == id).Any();
+        if (hasTransactions)
+            throw new Exception("This account can't be deleted because the user has already made transactions.");
 
         _uow.Accounts.Delete(id);
         _uow.Save();
     }
-    public void DeleteCategory(int id) 
+
+    public void DeleteCategory(int id)
     {
         var category = _uow.Categories.GetById(id);
         if (category == null)
             throw new Exception($"Category with ID {id} not found.");
 
-        if (category.Transactions != null)
-            throw new Exception("This category can't be deleted, because it has associated transactions.");
+        bool hasTransactions = _uow.Transactions.Find(t => t.CategoryId == id).Any();
+        if (hasTransactions)
+            throw new Exception("This category can't be deleted because it has associated transactions.");
 
         _uow.Categories.Delete(id);
         _uow.Save();
@@ -135,11 +138,6 @@ public class FinanceService : IFinanceService
 
     public Dictionary<string, decimal> GetStatisticsByCategory(TransactionType type)
     {
-        //var transactions = _uow.Transactions.Find(t => t.Category.Type == type);
-        //return transactions
-        //    .GroupBy(t => t.Category.Name)
-        //    .ToDictionary(g => g.Key, g => g.Sum(t => t.Amount));
-
         var transactions = _uow.Transactions.GetAllWithInclude(t => t.Category).Where(t => t.Category.Type == type);
         
         return transactions
