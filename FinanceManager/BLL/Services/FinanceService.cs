@@ -31,16 +31,11 @@ public class FinanceService : IFinanceService
 
     public IEnumerable<TransactionDTO> GetTransactionHistory()
     {
-        var transactions = _uow.Transactions.GetAll().ToList();
-        var dtos = _mapper.Map<List<TransactionDTO>>(transactions);
+        var transactions = _uow.Transactions.GetAllWithInclude(
+        t => t.Category,
+        t => t.Account);
 
-        foreach (var dto in dtos)
-        {
-            dto.AccountName = _uow.Accounts.GetById(dto.AccountId)?.Name ?? "Unknown";
-            dto.CategoryName = _uow.Categories.GetById(dto.CategoryId)?.Name ?? "Unknown";
-        }
-
-        return dtos;
+        return _mapper.Map<IEnumerable<TransactionDTO>>(transactions);
     }
 
     public void CreateAccount(AccountDTO accountDto)
@@ -87,6 +82,31 @@ public class FinanceService : IFinanceService
         _uow.Save();
     }
 
+    public void DeleteAccount(int id)
+    {
+        var account = _uow.Accounts.GetById(id);
+        if (account == null)
+            throw new Exception($"Account with ID {id} not found.");
+
+        if (account.Transactions != null)
+            throw new Exception("This account can't be deleted, because the user has already made transactions.");
+
+        _uow.Accounts.Delete(id);
+        _uow.Save();
+    }
+    public void DeleteCategory(int id) 
+    {
+        var category = _uow.Categories.GetById(id);
+        if (category == null)
+            throw new Exception($"Category with ID {id} not found.");
+
+        if (category.Transactions != null)
+            throw new Exception("This category can't be deleted, because it has associated transactions.");
+
+        _uow.Categories.Delete(id);
+        _uow.Save();
+    }
+
     public void MakeTransaction(TransactionDTO dto)
     {
         var account = _uow.Accounts.GetById(dto.AccountId);
@@ -115,18 +135,32 @@ public class FinanceService : IFinanceService
 
     public Dictionary<string, decimal> GetStatisticsByCategory(TransactionType type)
     {
-        var transactions = _uow.Transactions.Find(t => t.Category.Type == type);
+        //var transactions = _uow.Transactions.Find(t => t.Category.Type == type);
+        //return transactions
+        //    .GroupBy(t => t.Category.Name)
+        //    .ToDictionary(g => g.Key, g => g.Sum(t => t.Amount));
+
+        var transactions = _uow.Transactions.GetAllWithInclude(t => t.Category).Where(t => t.Category.Type == type);
+        
         return transactions
             .GroupBy(t => t.Category.Name)
-            .ToDictionary(g => g.Key, g => g.Sum(t => t.Amount));
+            .ToDictionary(
+                g => g.Key,
+                g => g.Sum(t => t.Amount)
+            );
     }
 
     public Dictionary<string, decimal> GetStatisticsByAccount(int accID, TransactionType type)
     {
-        var transactions = _uow.Transactions.Find(t => t.AccountId == accID && t.Category.Type == type);
+        var transactions = _uow.Transactions.GetAllWithInclude(t => t.Account, t => t.Category)
+            .Where(t => t.AccountId == accID && t.Category.Type == type);
+
         return transactions
             .GroupBy(t => t.Category.Name)
-            .ToDictionary(a => a.Key, a => a.Sum(t => t.Amount));
+            .ToDictionary(
+                g => g.Key,
+                g => g.Sum(t => t.Amount)
+            );
     }
 
     public void TransferFunds(TransferDTO dto)

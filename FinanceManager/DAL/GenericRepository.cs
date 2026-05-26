@@ -49,5 +49,16 @@ namespace DAL
                 _dbSet.Remove(entity);
             }
         }
+        public IEnumerable<T> GetAllWithInclude(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _dbSet;
+
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return query.ToList();
+        }
     }
 }

@@ -13,6 +13,8 @@ namespace BLL.Services
         void CreateCategory(CategoryDTO categoryDto);
         void UpdateAccount(int id, string newName);
         void UpdateCategory(int id, string newName);
+        void DeleteAccount(int id);
+        void DeleteCategory(int id);
         void MakeTransaction(TransactionDTO transactionDto);
         void TransferFunds(TransferDTO dto);
 
