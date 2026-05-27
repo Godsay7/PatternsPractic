@@ -178,10 +178,26 @@ public class FinanceService : IFinanceService
         if (fromAccount.Balance < dto.Amount)
             throw new Exception($"Insufficient funds on account '{fromAccount.Name}'.");
 
+        var expenseCategory = _uow.Categories.Find(c => c.Name == "Transfer Out" && c.Type == TransactionType.Expense).FirstOrDefault();
+        if (expenseCategory == null)
+        {
+            expenseCategory = new Category { Name = "Transfer Out", Type = TransactionType.Expense };
+            _uow.Categories.Add(expenseCategory);
+            _uow.Save();
+        }
+
+        var incomeCategory = _uow.Categories.Find(c => c.Name == "Transfer In" && c.Type == TransactionType.Income).FirstOrDefault();
+        if (incomeCategory == null)
+        {
+            incomeCategory = new Category { Name = "Transfer In", Type = TransactionType.Income };
+            _uow.Categories.Add(incomeCategory);
+            _uow.Save();
+        }
+
         var expenseTx = new Transaction
         {
             AccountId = dto.FromAccountId,
-            CategoryId = dto.ExpenseCategoryId,
+            CategoryId = expenseCategory.Id,
             Amount = dto.Amount,
             Date = DateTime.Now,
             Description = string.IsNullOrWhiteSpace(dto.Description)
@@ -192,7 +208,7 @@ public class FinanceService : IFinanceService
         var incomeTx = new Transaction
         {
             AccountId = dto.ToAccountId,
-            CategoryId = dto.IncomeCategoryId,
+            CategoryId = incomeCategory.Id,
             Amount = dto.Amount,
             Date = DateTime.Now,
             Description = string.IsNullOrWhiteSpace(dto.Description)

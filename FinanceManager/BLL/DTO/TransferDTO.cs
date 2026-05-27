@@ -11,8 +11,6 @@ namespace BLL.DTO
         public int FromAccountId { get; set; }
         public int ToAccountId { get; set; }
         public decimal Amount { get; set; }
-        public int ExpenseCategoryId { get; set; } = 6;
-        public int IncomeCategoryId { get; set; } = 5;
         public string? Description { get; set; }
     }
 }
