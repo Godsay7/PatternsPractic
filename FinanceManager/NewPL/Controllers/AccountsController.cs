@@ -21,7 +21,7 @@ public class AccountsController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Create([FromBody] AccountDTO dto)
+    public IActionResult Create([FromBody] CreateAccountDTO dto)
     {
         try
         {

@@ -22,7 +22,7 @@ public class TransactionsController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Create([FromBody] TransactionDTO dto)
+    public IActionResult Create([FromBody] CreateTransactionDTO dto)
     {
         try
         {

@@ -22,7 +22,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Create([FromBody] CategoryDTO dto)
+    public IActionResult Create([FromBody] CreateCategoryDTO dto)
     {
         try
         {
