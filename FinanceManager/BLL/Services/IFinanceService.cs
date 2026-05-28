@@ -8,14 +8,14 @@ namespace BLL.Services
         IEnumerable<AccountDTO> GetAllAccounts();
         IEnumerable<CategoryDTO> GetAllCategories();
         IEnumerable<TransactionDTO> GetTransactionHistory();
-
-        void CreateAccount(AccountDTO accountDto);
-        void CreateCategory(CategoryDTO categoryDto);
+        
+        void CreateAccount(CreateAccountDTO dto);
+        void CreateCategory(CreateCategoryDTO dto);
         void UpdateAccount(int id, string newName);
         void UpdateCategory(int id, string newName);
         void DeleteAccount(int id);
         void DeleteCategory(int id);
-        void MakeTransaction(TransactionDTO transactionDto);
+        void MakeTransaction(CreateTransactionDTO dto);
         void TransferFunds(TransferDTO dto);
 
         Dictionary<string, decimal> GetStatisticsByCategory(TransactionType type);

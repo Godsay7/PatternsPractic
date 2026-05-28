@@ -38,19 +38,35 @@ public class FinanceService : IFinanceService
         return _mapper.Map<IEnumerable<TransactionDTO>>(transactions);
     }
 
-    public void CreateAccount(AccountDTO accountDto)
+    public void CreateAccount(CreateAccountDTO dto)
     {
-        var account = _mapper.Map<Account>(accountDto);
+        bool accountExists = _uow.Accounts
+        .Find(a => a.Name.ToLower() == dto.Name.ToLower())
+        .Any();
+
+        if (accountExists)
+            throw new Exception($"Account with the name '{dto.Name}' already exists.");
+
+        var account = _mapper.Map<Account>(dto);
+        account.Balance = 0; 
         _uow.Accounts.Add(account);
         _uow.Save();
     }
 
-    public void CreateCategory(CategoryDTO categoryDto)
+    public void CreateCategory(CreateCategoryDTO dto)
     {
-        var category = _mapper.Map<Category>(categoryDto);
+        bool categoryExists = _uow.Categories
+        .Find(c => c.Name.ToLower() == dto.Name.ToLower() && c.Type == dto.Type)
+        .Any();
+
+        if (categoryExists)
+            throw new Exception($"Category '{dto.Name}' of type '{dto.Type}' already exists.");
+
+        var category = _mapper.Map<Category>(dto);
         _uow.Categories.Add(category);
         _uow.Save();
     }
+
 
     public void UpdateAccount(int id, string newName)
     {
@@ -110,7 +126,7 @@ public class FinanceService : IFinanceService
         _uow.Save();
     }
 
-    public void MakeTransaction(TransactionDTO dto)
+    public void MakeTransaction(CreateTransactionDTO dto)
     {
         var account = _uow.Accounts.GetById(dto.AccountId);
         var category = _uow.Categories.GetById(dto.CategoryId);

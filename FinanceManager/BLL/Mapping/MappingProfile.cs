@@ -16,6 +16,10 @@ namespace BLL.Mapping
                 .ForMember(d => d.CategoryName, opt => opt.MapFrom(s => s.Category.Name));
 
             CreateMap<TransactionDTO, Transaction>();
+
+            CreateMap<CreateAccountDTO, Account>();
+            CreateMap<CreateCategoryDTO, Category>();
+            CreateMap<CreateTransactionDTO, Transaction>();
         }
     }
 }
